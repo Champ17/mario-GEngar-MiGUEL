@@ -1,4 +1,4 @@
-// TODO
+
 game.playerEntinty = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.Entity, "init", [x, y, {
@@ -23,6 +23,9 @@ game.playerEntinty = me.Entity.extend({
             this.body.vel.x = 0;
         }
 
+        this.body.update(delta);
+        me.collision.check(this, true, this.collideHandler.bind(this), true);
+
         if (this.body.vel.x !== 0) {
             if (!this.renderable.isCurrentAnimation("smallWalk")) {
                 this.renderable.setCurrentAnimation("smallWalk");
@@ -33,19 +36,26 @@ game.playerEntinty = me.Entity.extend({
         }
 
 
-        this.body.update(delta);
+
         this._super(me.Entity, "update", [delta]);
         return true;
+    },
+    
+    collideHandler: function(response){
+        
     }
 
-});    
+});
 
 game.levelTrigger = me.Entity.extend({
-    init : function(x, y, settings){
-        this._super(me.Entity,)
+    init: function(x, y, settings) {
+        this._super(me.Entity, "init", [x, y, settings]);
+        this.body.onCollision = this.onCollision.bind(this);
+        this.level = settings.level;
     },
-   onCollision: function(){
-       
-   } 
-    
+    onCollision: function() {
+        this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+        me.levelDirector.loadLevel(this.level);
+    }
+
 });
