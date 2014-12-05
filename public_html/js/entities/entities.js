@@ -12,7 +12,7 @@ game.playerEntinty = me.Entity.extend({
                 }
             }]);
         this.renderable.addAnimation("idle", [39]);
-        this.renderable.addAnimation("smallWalk", [87, 88 , 89, 90, 91, 92, 93, 94, 95], 80);
+        this.renderable.addAnimation("smallWalk", [143, 144 , 145, 146, 147, 148, 149, 150, 151], 80);
         this.renderable.setCurrentAnimation("idle");
         this.body.setVelocity(5, 20);
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
