@@ -2,17 +2,17 @@
 game.playerEntinty = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.Entity, "init", [x, y, {
-                image: "mario",
-                spritewidth: "128",
-                spriteheight: "128",
-                width: 128,
-                height: 128,
+                image: "GR",
+                spritewidth: "64",
+                spriteheight: "64",
+                width: 64,
+                height: 64,
                 getShape: function() {
-                    return (new me.Rect(0, 0, 30, 128)).toPolygon();
+                    return (new me.Rect(0, 0, 64, 64)).toPolygon();
                 }
             }]);
-        this.renderable.addAnimation("idle", [3]);
-        this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13], 80);
+        this.renderable.addAnimation("idle", [39]);
+        this.renderable.addAnimation("smallWalk", [87, 88 , 89, 90, 91, 92, 93, 94, 95], 80);
         this.renderable.setCurrentAnimation("idle");
         this.body.setVelocity(5, 20);
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);

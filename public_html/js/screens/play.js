@@ -6,7 +6,8 @@ game.PlayScreen = me.ScreenObject.extend({
         // reset the score
         game.data.score = 0;
 
-        me.levelDirector.loadLevel("GengarL4");
+        me.levelDirector.loadLevel("GengarL6");
+        
 
         this.resetPlayer(0, 0);
 

@@ -42,12 +42,12 @@
   </data>
  </layer>
  <objectgroup name="trigger-entities">
-  <object x="1073.33" y="478.667"/>
+  <object x="1085.33" y="490.667"/>
   <object x="1076" y="424"/>
   <object name="levelTrigger" x="1034.67" y="400" width="102.667" height="170.667">
    <properties>
-    <property name="level" value="GengarL5"/>
-    <property name="xSpawn" value="400"/>
+    <property name="level" value="GengarL6"/>
+    <property name="xSpawn" value="0"/>
     <property name="ySpawn" value="0"/>
    </properties>
   </object>
