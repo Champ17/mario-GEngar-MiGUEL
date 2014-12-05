@@ -13,7 +13,7 @@ game.TitleScreen = me.ScreenObject.extend({
              this.font = new me.Font("Arial", 46, "black");   
             },
             draw: function(renderer) {
-            this.font.draw(renderer.getContext(), "MARIO", 450, 130);
+            this.font.draw(renderer.getContext(), "Mr.Gengar Warrior", 350, 130);
             this.font.draw(renderer.getContext(), "Press Enter to play", 320, 530);
             
 

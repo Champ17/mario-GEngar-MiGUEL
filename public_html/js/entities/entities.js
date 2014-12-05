@@ -12,7 +12,7 @@ game.playerEntinty = me.Entity.extend({
                 }
             }]);
         this.renderable.addAnimation("idle", [39]);
-        this.renderable.addAnimation("smallWalk", [143, 144 , 145, 146, 147, 148, 149, 150, 151], 80);
+        this.renderable.addAnimation("smallWalk", [143, 144, 145, 146, 147, 148, 149, 150, 151], 80);
         this.renderable.setCurrentAnimation("idle");
         this.body.setVelocity(5, 20);
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -21,7 +21,7 @@ game.playerEntinty = me.Entity.extend({
         if (me.input.isKeyPressed("Right")) {
             this.body.vel.x += this.body.accel.x * me.timer.tick;
             this.flipX(false);
-        } else  {
+        } else {
             this.body.vel.x = 0;
         }
         if (me.input.isKeyPressed('Left')) {
@@ -32,37 +32,39 @@ game.playerEntinty = me.Entity.extend({
             }
         }
         if (me.input.isKeyPressed('jump')) {
-          // make sure we are not already jumping or falling
-          if (!this.body.jumping && !this.body.falling) {
-              // set current vel to the maximum defined value
-              // gravity will then do the rest
-              this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
-              // set the jumping flag
-              this.body.jumping = true;
+            // make sure we are not already jumping or falling
+            if (!this.body.jumping && !this.body.falling) {
+                // set current vel to the maximum defined value
+                // gravity will then do the rest
+                this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+                // set the jumping flag
+                this.body.jumping = true;
+                // play some audio 
+                me.audio.play("jump");
             }
         }
 
-            this.body.update(delta);
-            me.collision.check(this, true, this.collideHandler.bind(this), true);
+        this.body.update(delta);
+        me.collision.check(this, true, this.collideHandler.bind(this), true);
 
-            if (this.body.vel.x !== 0) {
-                if (!this.renderable.isCurrentAnimation("smallWalk")) {
-                    this.renderable.setCurrentAnimation("smallWalk");
-                    this.renderable.setAnimationFrame();
-                }
-            } else {
-                this.renderable.setCurrentAnimation("idle");
+        if (this.body.vel.x !== 0) {
+            if (!this.renderable.isCurrentAnimation("smallWalk")) {
+                this.renderable.setCurrentAnimation("smallWalk");
+                this.renderable.setAnimationFrame();
             }
-
-
-
-            this._super(me.Entity, "update", [delta]);
-            return true;
+        } else {
+            this.renderable.setCurrentAnimation("idle");
         }
-        ,
-                collideHandler: function(response){
 
-            }
+
+
+        this._super(me.Entity, "update", [delta]);
+        return true;
+    }
+    ,
+    collideHandler: function(response) {
+
+    }
 });
 
 
@@ -80,7 +82,7 @@ game.levelTrigger = me.Entity.extend({
         me.levelDirector.loadLevel(this.level);
         me.state.current().resetPlayer(this.xSpawn, this.ySpawn);
     }
-    
-    
+
+
 
 });
