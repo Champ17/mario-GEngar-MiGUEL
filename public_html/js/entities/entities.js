@@ -63,22 +63,25 @@ game.playerEntinty = me.Entity.extend({
     }
     ,
     collideHandler: function(response) {
-    var ydif = this.pos.y - response.b.pos.y;
-    console.log(ydif);
-   
-           
-           
+        var ydif = this.pos.y - response.b.pos.y;
+        console.log(ydif);
+
+
+
         if (response.b.type === "badguy") {
-         if(ydif <= -37){
-             response.b.alive = false; 
-         }else{
-               me.state.change(me.state.MENU);
-         } 
-             
+            if (ydif <= -37) {
+                response.b.alive = false;
+            }else {
+                me.state.change(me.state.GAMEOVER);
+            }//else if(response.b.type === 'mushroom'){
+                //console.log(Big!);
+            }
+            
+
 
         }
     }
-});
+);
 
 
 
@@ -161,3 +164,22 @@ game.levelTrigger = me.Entity.extend({
 
 
         });
+
+game.Mushroom = me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.Entity, "init", [x, y, {
+                image: "mushroom",
+                spritewidth: "64 ",
+                spriteheight: "64",
+                width: 64,
+                height: 64,
+                getShape: function() {
+                    return (new me.Rect(0, 0, 64, 64)).toPolygon();
+                }
+            }]);
+        me.collision.check(this);
+        this.type = "mushroom";
+    }
+
+
+});          

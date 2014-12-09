@@ -13,6 +13,7 @@ game.resources = [
     {name: "GR", type: "image", src: "data/img/GR.png"},
     {name: "enemy", type: "image", src: "data/img/slime-spritesheet.png"},
     {name: "mushroom", type: "image", src: "data/img/mushroom.png"},
+    {name: "gameover", type: "image", src: "data/img/gameover.png"},
     /* Atlases 
      * @example
      * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},

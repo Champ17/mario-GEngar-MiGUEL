@@ -42,12 +42,13 @@ var game = {
 	"loaded" : function () {
                 me.pool.register("mario", game.playerEntinty, true);
 		me.pool.register("BadGuy", game.BadGuy);
-                me.pool.register("mushroom", game.Mushroom);
+                me.pool.register("mushroom", game.Mushroom );
                 
                 me.pool.register("levelTrigger", game.levelTrigger);
                 
                 me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());
+                me.state.set(me.state.GAMEOVER, new game.gameOver());
                 //me.state.set(me.state.GAMEOVER, new game.EndScreen());
 
 		// Start the game.
