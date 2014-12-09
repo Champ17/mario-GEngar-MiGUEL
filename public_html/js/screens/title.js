@@ -6,6 +6,8 @@ game.TitleScreen = me.ScreenObject.extend({
         var titleImage = new me.Sprite(0, 0, me.loader.getImage("title-screen"));
         me.game.world.addChild(titleImage, -10);
         me.input.bindKey(me.input.KEY.ENTER, "start");
+       // me.audio.playTrack("hi");
+ 
 
         me.game.world.addChild(new (me.Renderable.extend({
             init: function() {
@@ -36,5 +38,6 @@ game.TitleScreen = me.ScreenObject.extend({
     onDestroyEvent: function() {
         me.input.unbindKey(me.input.KEY.ENTER);
         me.event.unsubscribe(this.handler);
+        //me.audio.stopTrack("hi");
     }
 });

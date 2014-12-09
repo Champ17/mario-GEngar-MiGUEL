@@ -9,7 +9,7 @@ game.PlayScreen = me.ScreenObject.extend({
         me.levelDirector.loadLevel("GengarL6");
         
 
-        this.resetPlayer(400, 0);
+        this.resetPlayer(0, 0);
 
         me.input.bindKey(me.input.KEY.RIGHT, "Right");
         me.input.bindKey(me.input.KEY.LEFT, "Left");

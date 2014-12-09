@@ -26,8 +26,7 @@ var game = {
 
 	// Initialize the audio.
 	me.audio.init("mp3");
-        me.audio.init("jump");
-        
+                
 
 	// Set a callback to run when loading is complete.
 	me.loader.onload = this.loaded.bind(this);
@@ -42,10 +41,14 @@ var game = {
 	// Run on game resources loaded.
 	"loaded" : function () {
                 me.pool.register("mario", game.playerEntinty, true);
-		me.state.set(me.state.MENU, new game.TitleScreen());
-		me.state.set(me.state.PLAY, new game.PlayScreen());
+		me.pool.register("BadGuy", game.BadGuy);
+                me.pool.register("mushroom", game.Mushroom);
                 
                 me.pool.register("levelTrigger", game.levelTrigger);
+                
+                me.state.set(me.state.MENU, new game.TitleScreen());
+		me.state.set(me.state.PLAY, new game.PlayScreen());
+                //me.state.set(me.state.GAMEOVER, new game.EndScreen());
 
 		// Start the game.
 		me.state.change(me.state.MENU);
